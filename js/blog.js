@@ -4,10 +4,14 @@
  */
 
 const Blog = (() => {
-  // Dynamic base URL: works from / and from subdirectories like /blog/, /post/
+  // Compute base URL from script location — works on any domain/subdirectory
   const BASE_URL = (() => {
-    const depth = (window.location.pathname.match(/\//g) || []).length;
-    return depth > 1 ? '../'.repeat(depth - 1) : '';
+    const script = document.currentScript;
+    if (script && script.src) {
+      // script.src = ".../js/blog.js" → base = ".../"
+      return script.src.replace(/js\/blog\.js.*$/, '');
+    }
+    return '';
   })();
   const POSTS_DATA_PATH = BASE_URL + 'data/posts.json';
   const STORAGE_KEY = 'blog_posts';
