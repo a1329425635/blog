@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="关于我和这个博客">
+  <meta property="og:title" content="关于 - 浊酒澄心">
+  <meta property="og:description" content="遥祝远行人 有道不孤">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230d0d14'/><polygon points='16,6 22,16 16,26 10,16' fill='%235599ee'/></svg>">
+  <title>关于 - 博客</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
+  <script src="js/utils.js"></script>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">跳转到主要内容</a>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">BLOG</a>
+      <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="blog.html">博客</a></li>
+        <li><a href="links.html">友链</a></li>
+        <li><a href="about.html" class="active">关于</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="菜单" aria-expanded="false">
+        <span></span>
+      </button>
+      <span id="theme-toggle-container"></span>
+    </div>
+  </nav>
+
+  <main id="main-content" class="about-page">
+    <header class="about-header">
+      <div class="about-avatar">
+        <img src="images/head.jpg" alt="头像">
+      </div>
+      <h1 class="about-name">浊酒澄心</h1>
+      <p class="about-tagline">遥祝远行人 有道不孤</p>
+    </header>
+
+    <div class="about-body">
+      <section class="about-section">
+        <h2 class="about-section-title">关于博客</h2>
+        <p>
+          这是一个个人博客，用于记录阅读时、日常生活中的思考，以及一些平日里折腾的零零碎碎的小玩意。感谢ai让我一个小白也能做些以前一直做不了的东西，之后可能会慢慢学习修改，就酱紫吧。
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h2 class="about-section-title">技术栈</h2>
+        <p>
+          本博客是一个纯静态网站，使用 HTML + CSS + JavaScript 构建。文章通过 Markdown 编写，使用 marked.js 渲染。无需服务器或数据库，可部署到任何静态托管平台。
+        </p>
+        <div class="about-tags">
+          <span class="about-tag">HTML5</span>
+          <span class="about-tag">CSS3</span>
+          <span class="about-tag">JavaScript</span>
+          <span class="about-tag">Markdown</span>
+          <span class="about-tag">Static Site</span>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <h2 class="about-section-title">设计灵感</h2>
+        <p>
+          作为一个舟P，博客的界面UI借鉴了《明日方舟》的设计语言，扁平化的工业机能风格，亚克力毛玻璃材质感，以及蓝橙对比的强调色体系，都在这里得到了体现。
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h2 class="about-section-title">联系方式</h2>
+        <div class="about-links">
+          <!-- GitHub -->
+          <a href="https://github.com/a1329425635" target="_blank" rel="noopener noreferrer" class="about-icon-link" title="GitHub" aria-label="GitHub 主页">
+            <svg viewBox="0 0 24 24" fill-rule="evenodd" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0c6.63 0 12 5.276 12 11.79-.001 5.067-3.29 9.567-8.175 11.187-.6.118-.825-.25-.825-.56 0-.398.015-1.665.015-3.242 0-1.105-.375-1.813-.81-2.181 2.67-.295 5.475-1.297 5.475-5.822 0-1.297-.465-2.344-1.23-3.169.12-.295.54-1.503-.12-3.125 0 0-1.005-.324-3.3 1.209a11.32 11.32 0 00-3-.398c-1.02 0-2.04.133-3 .398-2.295-1.518-3.3-1.209-3.3-1.209-.66 1.622-.24 2.83-.12 3.125-.765.825-1.23 1.887-1.23 3.169 0 4.51 2.79 5.527 5.46 5.822-.345.294-.66.81-.765 1.577-.69.31-2.415.81-3.495-.973-.225-.354-.9-1.223-1.845-1.209-1.005.015-.405.56.015.781.51.28 1.095 1.327 1.23 1.666.24.663 1.02 1.93 4.035 1.385 0 .988.015 1.916.015 2.196 0 .31-.225.664-.825.56C3.303 21.374-.003 16.867 0 11.791 0 5.276 5.37 0 12 0z"/>
+            </svg>
+          </a>
+          <!-- Bilibili -->
+          <a href="https://space.bilibili.com/282047049" target="_blank" rel="noopener noreferrer" class="about-icon-link" title="Bilibili" aria-label="Bilibili 主页">
+            <svg viewBox="0 0 24 24" fill-rule="evenodd" xmlns="http://www.w3.org/2000/svg">
+              <path clip-rule="evenodd" d="M4.977 3.561a1.31 1.31 0 111.818-1.884l2.828 2.728c.08.078.149.163.205.254h4.277a1.32 1.32 0 01.205-.254l2.828-2.728a1.31 1.31 0 011.818 1.884L17.82 4.66h.848A5.333 5.333 0 0124 9.992v7.34a5.333 5.333 0 01-5.333 5.334H5.333A5.333 5.333 0 010 17.333V9.992a5.333 5.333 0 015.333-5.333h.781L4.977 3.56zm.356 3.67a2.667 2.667 0 00-2.666 2.667v7.529a2.667 2.667 0 002.666 2.666h13.334a2.667 2.667 0 002.666-2.666v-7.53a2.667 2.667 0 00-2.666-2.666H5.333zm1.334 5.192a1.333 1.333 0 112.666 0v1.192a1.333 1.333 0 11-2.666 0v-1.192zM16 11.09c-.736 0-1.333.597-1.333 1.333v1.192a1.333 1.333 0 102.666 0v-1.192c0-.736-.597-1.333-1.333-1.333z"/>
+            </svg>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-text">
+        Built with <span class="footer-accent">◆</span> &
+        inspired by Arknights Design Language
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

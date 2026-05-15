@@ -1,0 +1,9 @@
+# Claude Code settings (local, not for deployment)
+.claude/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
