@@ -4,7 +4,12 @@
  */
 
 const Blog = (() => {
-  const POSTS_DATA_PATH = 'data/posts.json';
+  // Dynamic base URL: works from / and from subdirectories like /blog/, /post/
+  const BASE_URL = (() => {
+    const depth = (window.location.pathname.match(/\//g) || []).length;
+    return depth > 1 ? '../'.repeat(depth - 1) : '';
+  })();
+  const POSTS_DATA_PATH = BASE_URL + 'data/posts.json';
   const STORAGE_KEY = 'blog_posts';
 
   async function loadPosts() {
@@ -50,7 +55,7 @@ const Blog = (() => {
       .join('');
 
     return `
-      <a href="post.html?id=${encodeURIComponent(post.id)}" class="post-card animate-in">
+      <a href="${BASE_URL}post/?id=${encodeURIComponent(post.id)}" class="post-card animate-in">
         <div class="post-card-meta">
           <span class="post-card-date">${Utils.formatDate(post.date)}</span>
           ${tags ? '<span class="post-card-tags">' + tags + '</span>' : ''}
@@ -139,7 +144,7 @@ const Blog = (() => {
     container.innerHTML = `
       <article>
         <header class="post-header">
-          <a href="index.html" class="post-header-back">
+          <a href="${BASE_URL}" class="post-header-back">
             <span>←</span> 返回首页
           </a>
           <h1 class="post-title">${Utils.escapeHtml(post.title)}</h1>
@@ -185,7 +190,7 @@ const Blog = (() => {
     const postId = params.get('id');
 
     if (!postId) {
-      window.location.href = 'index.html';
+      window.location.href = BASE_URL || './';
       return;
     }
 

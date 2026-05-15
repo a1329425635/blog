@@ -10,9 +10,9 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230d0d14'/><polygon points='16,6 22,16 16,26 10,16' fill='%235599ee'/></svg>">
   <title>友链 - 博客</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/theme.js"></script>
-  <script src="js/utils.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/theme.js"></script>
+  <script src="../js/utils.js"></script>
 </head>
 <body>
 
@@ -20,12 +20,12 @@
 
   <nav class="nav">
     <div class="nav-inner">
-      <a href="index.html" class="nav-brand">BLOG</a>
+      <a href="../" class="nav-brand">BLOG</a>
       <ul class="nav-links">
-        <li><a href="index.html">首页</a></li>
-        <li><a href="blog.html">博客</a></li>
-        <li><a href="links.html" class="active">友链</a></li>
-        <li><a href="about.html">关于</a></li>
+        <li><a href="../">首页</a></li>
+        <li><a href="../blog/">博客</a></li>
+        <li><a href="./" class="active">友链</a></li>
+        <li><a href="../about/">关于</a></li>
       </ul>
       <button class="nav-toggle" id="nav-toggle" aria-label="菜单" aria-expanded="false">
         <span></span>
@@ -42,7 +42,6 @@
     </header>
 
     <div id="links-grid" class="links-grid">
-      <!-- Rendered by JS -->
     </div>
   </main>
 
@@ -59,7 +58,7 @@
     (async () => {
       const grid = document.getElementById('links-grid');
       try {
-        const resp = await fetch('data/links.json');
+        const resp = await fetch('../data/links.json');
         const data = await resp.json();
         const links = data.links || [];
         if (links.length === 0) {
