@@ -166,6 +166,96 @@ const Blog = (() => {
         </div>
       </article>
     `;
+
+    initTOC();
+  }
+
+  // ==================== Table of Contents ====================
+
+  let tocObserver = null;
+
+  function initTOC() {
+    // Remove any existing TOC
+    const oldToc = document.querySelector('.post-toc');
+    if (oldToc) oldToc.remove();
+    if (tocObserver) { tocObserver.disconnect(); tocObserver = null; }
+
+    const body = document.getElementById('post-body-content');
+    if (!body) return;
+
+    const headings = body.querySelectorAll('h2, h3');
+    if (headings.length < 2) return;
+
+    // Collect heading info and assign stable IDs
+    const items = [];
+    headings.forEach((h, i) => {
+      const id = 'toc-h-' + i;
+      h.id = id;
+      items.push({ id, text: h.textContent.trim(), level: h.tagName.toLowerCase() });
+    });
+
+    // Build TOC DOM
+    const aside = document.createElement('aside');
+    aside.className = 'post-toc';
+    aside.setAttribute('aria-label', '文章目录');
+    aside.innerHTML = `
+      <div class="post-toc-title">目录</div>
+      <nav class="post-toc-nav">
+        ${items.map(item => `
+          <a href="#${item.id}" class="post-toc-item toc-${item.level}">
+            ${Utils.escapeHtml(item.text)}
+          </a>
+        `).join('')}
+      </nav>
+    `;
+
+    document.body.appendChild(aside);
+
+    // Fade in
+    requestAnimationFrame(() => { aside.classList.add('visible'); });
+
+    // Click handler
+    aside.querySelectorAll('.post-toc-item').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.getElementById(link.getAttribute('href').slice(1));
+        if (target) {
+          // Update active immediately
+          aside.querySelectorAll('.post-toc-item').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Scroll tracking
+    setupScrollSpy(items.map(i => i.id));
+  }
+
+  function setupScrollSpy(headingIds) {
+    const links = document.querySelectorAll('.post-toc-item');
+    if (links.length === 0) return;
+
+    // Track which heading is most recently scrolled past the observation line
+    const headingEls = headingIds.map(id => document.getElementById(id)).filter(Boolean);
+    if (headingEls.length === 0) return;
+
+    tocObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const link = document.querySelector(`.post-toc-item[href="#${entry.target.id}"]`);
+        if (!link) return;
+
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    }, {
+      rootMargin: '-100px 0px -55% 0px',
+      threshold: 0
+    });
+
+    headingEls.forEach(el => tocObserver.observe(el));
   }
 
   async function initHomePage() {

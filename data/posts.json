@@ -1,16 +1,3 @@
 {
-  "posts": [
-    {
-      "id": "building-blog-with-claude",
-      "title": "测试",
-      "date": "2026-05-15",
-      "tags": [
-        "无"
-      ],
-      "excerpt": "111",
-      "content": "**这里啥都没有**",
-      "featured_image": "",
-      "published": true
-    }
-  ]
+  "posts": []
 }
